@@ -13,17 +13,14 @@ The ui-draggable attribute tells Angular that the element is draggable. ui-dragg
 
 #### _**drag**_(variable)
 
-The class used to mark child elements of draggable object to be used as drag handle. Default class name is `drag-handle`
-
-**NOTE**: If attribute is not present drag handle feature is not active.
-
+The `drag` property is used to assign the data that needs to be passed along with the dragging element.
 
 
 #### _**drag-handle-class**_(string)
 
-The `drag` property is used to assign the data that needs to be passed along with the dragging element.
+The class used to mark child elements of draggable object to be used as drag handle. Default class name is `drag-handle`
 
-
+**NOTE**: If attribute is not present drag handle feature is not active.
 
 
 #### _**on-drop-success**_(function)
@@ -46,11 +43,7 @@ You can request the `drag-end` event ( very similiar to requesting the click eve
 
 #### _**drag-channel**_(string)
 
-The `on-drop-failure` attribute takes a function. We can consider this to be an on-drop-failure handler function. This can be useful if you need to do some post processing after the dragged element is dropped unsuccessfully on any drop site.
-
-**NOTE**: This callback function is only called when the drop fails.
-You can request the `drag-end` event ( very similiar to requesting the click event in `ng-click` ) by passing `$event` in the event handler.
-
+The channel that the dragged element is tied to. The dragged element should have the same drag channel as the drop site's drop channel for it to be droppable at a location. It is possible to provide a comma separated list of channels.
 
 
 ### Usage
@@ -82,7 +75,7 @@ The `ui-on-drop` callback can request additional parameters. The data that is dr
 
 The channel that the drop site accepts. The dragged element should have the same channel as this drop site for it to be droppable at this location. It is possible to provide comma separated list of channels.
 
-**NOTE**: Also special value of `drag-channel` attribute is available to accept dragged element with any channel value — *
+**NOTE**: Also special value of `drop-channel` attribute is available to accept dragged element with any channel value — *
 
 
 
@@ -104,17 +97,3 @@ The class that will be added to the the droppable element when a dragged element
 #### _**drag-hover-class**_(string)
 
 The class that will be added to the drop area element when hovering with an element. The default value for this is `on-drag-hover`
-
-
-
-### Usage
-
-
-
-### Events
-
-On start of dragging an Angular Event `ANGULAR_DRAG_START` is dispatched from the `$rootScope`. The event also carries carries the information about the channel in which the dragging has started.
-
-On end of dragging an Angular Event `ANGULAR_DRAG_END` is dispatched from the `$rootScope`. The event also carries carries the information about the channel in which the dragging has started.
-
-When hovering a draggable element on top of a drop area an Angular Event `ANGULAR_HOVER` is dispatched from the `$rootScope`. The event also carries the information about the channel in which the dragging has started.
